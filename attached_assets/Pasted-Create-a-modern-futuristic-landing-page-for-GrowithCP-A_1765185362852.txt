@@ -1,0 +1,93 @@
+Create a modern, futuristic landing page for GrowithCP AI — an AI website consultant for non-tech and non-designer people. The purpose is to help visitors understand what kind of website they actually need and also guide them on pricing.
+
+🎨 Design Style
+
+Use the same reddish–maroon liquid gradient + black matte finish inspired by Bolt AI.
+
+Background should have flowing liquid gradients, soft glows, and subtle depth.
+
+Use glassmorphism panels and smooth micro-animations.
+
+Everything must feel premium, futuristic, and clean.
+
+🧠 Core UX Requirement
+
+When the user lands on the website:
+
+Step 1 (Collapsed Mode)
+
+Show one centered chat dialogue box with the text:
+“Confused about website needs?”
+
+Show a single input field + button.
+
+This box should be minimal, floating, and animated slightly.
+
+Step 2 (Expanded Chat Mode)
+
+When the user types anything or clicks Start:
+
+The chat box should expand into a full chat interface.
+
+It should load the external chat UI inside an iframe pointing to:
+https://giguai.growithcp.live/chat
+
+The expansion must be smooth, animated, and futuristic.
+
+📄 Pages to Generate
+
+Generate the following pages with matching theme + layout:
+
+Home (main landing page with chat UI behavior)
+
+How It Works
+
+Pricing
+
+Why GrowithCP
+
+Contact
+
+All pages should use:
+
+Same maroon-black gradient background
+
+Glass cards
+
+Smooth transitions
+
+Simple header with nav links
+
+Modern typography
+
+🧩 Technical Notes
+
+Frontend only. No backend required.
+
+Build using Node.js + Express static structure or pure HTML/CSS/JS.
+
+Use clean folder structure:
+
+/public
+
+/public/pages
+
+/public/styles
+
+/public/scripts
+
+🎯 Final Output Needed
+
+Produce:
+
+A complete landing page HTML with the expanding chat animation.
+
+All additional pages (How It Works, Pricing, Why GrowithCP, Contact).
+
+Shared CSS with the liquid maroon gradient + black matte style.
+
+JS that handles chat-box expansion.
+
+Fully functional navigation.
+
+Make sure the overall look is Bolt-inspired, sleek, animated, premium, and visually strong with maroon dominance.
