@@ -9,6 +9,7 @@ import HowItWorks from "@/pages/HowItWorks";
 import Pricing from "@/pages/Pricing";
 import WhyGrowithCP from "@/pages/WhyGrowithCP";
 import Contact from "@/pages/Contact";
+import Chat from "@/pages/Chat";
 
 function Router() {
   return (
@@ -18,7 +19,8 @@ function Router() {
       <Route path="/pricing" component={Pricing} />
       <Route path="/why-growithcp" component={WhyGrowithCP} />
       <Route path="/contact" component={Contact} />
-      <Route component={NotFound} />
+      <Route path="/chat" component={Chat} />
+      <Route path="*" component={Home} />
     </Switch>
   );
 }

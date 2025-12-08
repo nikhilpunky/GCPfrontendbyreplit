@@ -109,7 +109,7 @@ export default function ChatInterface() {
             
             <div className="h-[calc(100%-60px)]">
               <iframe
-                src="https://giguai.growithcp.live/chat"
+                src="/chat"
                 className="w-full h-full border-0"
                 title="GrowithCP AI Chat"
                 data-testid="iframe-chat"
