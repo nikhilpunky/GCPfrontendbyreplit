@@ -178,35 +178,36 @@
 /* Liquid Gradient Background */
 .liquid-bg {
   background: 
-    radial-gradient(ellipse 80% 50% at 20% 40%, hsl(355 75% 25% / 0.4), transparent),
-    radial-gradient(ellipse 60% 40% at 80% 20%, hsl(355 60% 20% / 0.3), transparent),
-    radial-gradient(ellipse 50% 60% at 50% 80%, hsl(340 50% 15% / 0.25), transparent),
-    radial-gradient(ellipse 100% 100% at 50% 50%, hsl(0 0% 4%), hsl(0 0% 2%));
+    radial-gradient(ellipse 100% 80% at 10% 30%, hsl(355 85% 18% / 0.6), transparent),
+    radial-gradient(ellipse 70% 50% at 90% 15%, hsl(340 70% 12% / 0.5), transparent),
+    radial-gradient(ellipse 80% 70% at 50% 100%, hsl(355 60% 10% / 0.4), transparent),
+    radial-gradient(ellipse 50% 40% at 70% 60%, hsl(350 80% 15% / 0.3), transparent),
+    linear-gradient(180deg, hsl(0 0% 3%) 0%, hsl(355 15% 5%) 50%, hsl(0 0% 2%) 100%);
   background-attachment: fixed;
 }
 
 /* Glassmorphism Panel */
 .glass-panel {
-  background: hsl(0 0% 8% / 0.6);
+  background: hsl(355 10% 8% / 0.7);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid hsl(355 30% 25% / 0.3);
+  border: 1px solid hsl(355 40% 20% / 0.25);
 }
 
 .glass-panel-strong {
-  background: hsl(0 0% 10% / 0.8);
+  background: hsl(355 8% 9% / 0.85);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid hsl(355 30% 30% / 0.4);
+  border: 1px solid hsl(355 50% 25% / 0.35);
 }
 
 /* Maroon Glow Effects */
 .glow-maroon {
-  box-shadow: 0 0 40px hsl(355 75% 42% / 0.2), 0 0 80px hsl(355 75% 42% / 0.1);
+  box-shadow: 0 0 60px hsl(355 80% 35% / 0.3), 0 0 120px hsl(355 70% 30% / 0.15), inset 0 0 30px hsl(355 60% 20% / 0.1);
 }
 
 .glow-maroon-subtle {
-  box-shadow: 0 0 20px hsl(355 75% 42% / 0.15);
+  box-shadow: 0 0 30px hsl(355 70% 30% / 0.2), 0 0 60px hsl(355 60% 25% / 0.1);
 }
 
 /* Animated Gradient Background */
@@ -265,10 +266,17 @@
 
 /* Text Gradient */
 .text-gradient {
-  background: linear-gradient(135deg, hsl(355 75% 55%), hsl(355 85% 70%), hsl(340 70% 60%));
+  background: linear-gradient(135deg, hsl(355 80% 50%), hsl(350 90% 65%), hsl(345 85% 55%));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Premium Dark Card */
+.premium-card {
+  background: linear-gradient(145deg, hsl(355 12% 10% / 0.9), hsl(355 8% 7% / 0.95));
+  border: 1px solid hsl(355 50% 22% / 0.4);
+  box-shadow: 0 4px 24px hsl(355 50% 15% / 0.3);
 }
 
 /**
