@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { MessageCircle, Send, Sparkles } from "lucide-react";
+import { useSessionId } from "@/hooks/use-session-id";
 
 interface Message {
   text: string;
@@ -10,6 +11,7 @@ interface Message {
 }
 
 export default function ChatInterface() {
+  const sessionId = useSessionId();
   const [messages, setMessages] = useState<Message[]>([
     { text: "Hi! I'm your AI assistant. How can I help you with your website needs today?", sender: "ai" }
   ]);
@@ -36,7 +38,7 @@ export default function ChatInterface() {
       const res = await fetch("https://giguai.growithcp.live/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text })
+        body: JSON.stringify({ message: text, sessionId })
       });
 
       const data = await res.json();
