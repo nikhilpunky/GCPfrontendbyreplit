@@ -1,11 +1,15 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import ChatInterface from "@/components/ChatInterface";
 import GlassCard from "@/components/GlassCard";
 import { Badge } from "@/components/ui/badge";
-import { Sparkles, Shield, Zap } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Sparkles, Shield, Zap, MessageCircle, X } from "lucide-react";
 
 export default function Home() {
+  const [isChatOpen, setIsChatOpen] = useState(false);
+
   return (
     <PageLayout>
       <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
@@ -27,7 +31,16 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <ChatInterface />
+          {/* Chat Interface in Hero Section */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-12 cursor-pointer"
+            onClick={() => setIsChatOpen(true)}
+          >
+            <ChatInterface />
+          </motion.div>
         </div>
       </section>
 
@@ -78,6 +91,44 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Full-screen Chat Modal */}
+      <AnimatePresence>
+        {isChatOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm"
+            onClick={() => setIsChatOpen(false)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="fixed inset-4 sm:inset-6 lg:inset-8 flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="w-full h-full max-w-none bg-background rounded-2xl shadow-2xl overflow-hidden relative">
+                {/* Close Button */}
+                <button
+                  onClick={() => setIsChatOpen(false)}
+                  className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-background/80 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-background transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+
+                {/* Full-screen Chat Interface */}
+                <div className="h-full flex flex-col">
+                  <ChatInterface isFullscreen={true} />
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </PageLayout>
   );
 }

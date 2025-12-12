@@ -10,7 +10,11 @@ interface Message {
   sender: "user" | "ai";
 }
 
-export default function ChatInterface() {
+interface ChatInterfaceProps {
+  isFullscreen?: boolean;
+}
+
+export default function ChatInterface({ isFullscreen = false }: ChatInterfaceProps) {
   const sessionId = useSessionId();
   const [messages, setMessages] = useState<Message[]>([
     { text: "Hi! I'm your AI assistant. How can I help you with your website needs today?", sender: "ai" }
@@ -66,13 +70,88 @@ export default function ChatInterface() {
     }
   };
 
+  if (isFullscreen) {
+    return (
+      <div className="flex flex-col h-full">
+        <div className="flex items-center justify-between gap-4 p-6 border-b border-border bg-background/95 backdrop-blur-sm">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+              <MessageCircle className="w-5 h-5 text-primary" />
+            </div>
+            <div>
+              <span className="font-semibold text-lg">GrowithCP AI Consultant</span>
+              <p className="text-sm text-muted-foreground">Your website planning assistant</p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          ref={messagesContainerRef}
+          className="flex-1 overflow-y-auto p-6 space-y-6"
+        >
+          {messages.map((message, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+            >
+              <div className={`max-w-[75%] p-4 rounded-2xl ${
+                message.sender === 'user'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-muted/50 border border-border'
+              }`}>
+                {message.text}
+              </div>
+            </motion.div>
+          ))}
+
+          {isTyping && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="flex justify-start"
+            >
+              <div className="bg-muted/50 border border-border p-4 rounded-2xl">
+                AI is typing...
+              </div>
+            </motion.div>
+          )}
+          <div ref={messagesEndRef} />
+        </div>
+
+        <div className="flex-shrink-0 p-6 border-t border-border bg-background/95 backdrop-blur-sm">
+          <div className="flex gap-3">
+            <Input
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              placeholder="Ask me anything about your website..."
+              className="flex-1 text-base py-3 px-4 rounded-xl"
+              onKeyDown={handleKeyDown}
+              disabled={isTyping}
+              autoFocus
+            />
+            <Button
+              onClick={sendMessage}
+              disabled={!inputValue.trim() || isTyping}
+              size="lg"
+              className="px-6 py-3 rounded-xl"
+            >
+              <Send className="w-5 h-5" />
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <motion.div
       layout
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="w-full"
+      className="w-full max-w-4xl mx-auto"
       data-testid="chat-container"
     >
       <motion.div
@@ -134,6 +213,7 @@ export default function ChatInterface() {
               className="flex-1"
               onKeyDown={handleKeyDown}
               disabled={isTyping}
+              autoFocus
             />
             <Button onClick={sendMessage} disabled={!inputValue.trim() || isTyping}>
               <Send className="w-4 h-4" />
