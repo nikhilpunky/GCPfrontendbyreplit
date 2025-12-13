@@ -24,11 +24,19 @@ export default function ChatInterface({ isFullscreen = false }: ChatInterfacePro
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const messagesContainerRef = useRef<HTMLDivElement>(null);
 
-  // Auto scroll disabled
+  // Auto scroll to bottom when new messages are added
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const addMessage = (text: string, sender: "user" | "ai") => {
     setMessages(prev => [...prev, { text, sender }]);
   };
+
+  // Auto scroll when messages change
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, isTyping]);
 
   const sendMessage = async () => {
     const text = inputValue.trim();
