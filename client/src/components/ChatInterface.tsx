@@ -14,6 +14,69 @@ interface ChatInterfaceProps {
   isFullscreen?: boolean;
 }
 
+function LinkableText({ text }: { text: string }) {
+  // Regex to match URLs (http, https, or www)
+  const urlRegex = /(https?:\/\/[^\s]+|www\.[^\s]+)/g;
+
+  // Split text by URLs and create elements
+  const parts = text.split(urlRegex);
+
+  return (
+    <>
+      {parts.map((part, index) => {
+        if (urlRegex.test(part)) {
+          // It's a URL - make it a link
+          const href = part.startsWith('http') ? part : `https://${part}`;
+          return (
+            <a
+              key={index}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-primary/80 underline decoration-primary/30 hover:decoration-primary/60 transition-colors"
+            >
+              {part}
+            </a>
+          );
+        } else {
+          // Regular text
+          return <span key={index}>{part}</span>;
+        }
+      })}
+    </>
+  );
+}
+
+function FormattedMessage({ text }: { text: string }) {
+  // Check if text contains numbered points (1., 2., etc.) or double newlines
+  const hasNumberedPoints = /\d+\.\s/.test(text);
+  const hasDoubleNewlines = text.includes('\n\n');
+
+  if (!hasNumberedPoints && !hasDoubleNewlines) {
+    return <div className="whitespace-pre-wrap"><LinkableText text={text} /></div>;
+  }
+
+  // Split by numbered points (1., 2., etc.) or double newlines
+  const points = hasNumberedPoints
+    ? text.split(/\d+\.\s*/).filter(point => point.trim())
+    : text.split('\n\n').filter(point => point.trim());
+
+  return (
+    <div className="space-y-2">
+      {points.map((point, index) => (
+        <div key={index} className="response-point">
+          {hasNumberedPoints && index > 0 && (
+            <span className="font-medium text-primary mr-2">{index}.</span>
+          )}
+          <span className="whitespace-pre-wrap">
+            <LinkableText text={point.trim()} />
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function ChatInterface({ isFullscreen = false }: ChatInterfaceProps) {
   const sessionId = useSessionId();
   const [messages, setMessages] = useState<Message[]>([
@@ -47,7 +110,7 @@ export default function ChatInterface({ isFullscreen = false }: ChatInterfacePro
     setIsTyping(true);
 
     try {
-      const res = await fetch("https://giguai.growithcp.live/chat", {
+      const res = await fetch("http://localhost:3555/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: text, sessionId })
@@ -109,7 +172,11 @@ export default function ChatInterface({ isFullscreen = false }: ChatInterfacePro
                   ? 'bg-primary text-primary-foreground'
                   : 'bg-muted/50 border border-border'
               }`}>
-                {message.text}
+                {message.sender === 'ai' ? (
+                  <FormattedMessage text={message.text} />
+                ) : (
+                  message.text
+                )}
               </div>
             </motion.div>
           ))}
@@ -193,7 +260,11 @@ export default function ChatInterface({ isFullscreen = false }: ChatInterfacePro
                   ? 'bg-primary text-primary-foreground'
                   : 'bg-muted'
               }`}>
-                {message.text}
+                {message.sender === 'ai' ? (
+                  <FormattedMessage text={message.text} />
+                ) : (
+                  message.text
+                )}
               </div>
             </motion.div>
           ))}

@@ -29,7 +29,7 @@ export default function Chat() {
     setIsTyping(true);
 
     try {
-      const res = await fetch("https://giguai.growithcp.live/chat", {
+      const res = await fetch("http://localhost:3555/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: text, sessionId })
