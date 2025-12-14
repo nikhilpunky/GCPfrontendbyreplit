@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import ChatInterface from "@/components/ChatInterface";
@@ -9,6 +9,29 @@ import { Sparkles, Shield, Zap, MessageCircle, X } from "lucide-react";
 
 export default function Home() {
   const [isChatOpen, setIsChatOpen] = useState(false);
+
+  // Ensure page stays at top on component mount
+  useEffect(() => {
+    const scrollToTop = () => {
+      window.scrollTo(0, 0);
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    };
+
+    // Scroll immediately
+    scrollToTop();
+
+    // Also scroll after a delay to ensure it takes effect
+    const timeoutId = setTimeout(scrollToTop, 100);
+
+    // And scroll again after animations might have loaded
+    const timeoutId2 = setTimeout(scrollToTop, 500);
+
+    return () => {
+      clearTimeout(timeoutId);
+      clearTimeout(timeoutId2);
+    };
+  }, []);
 
   return (
     <PageLayout>

@@ -173,6 +173,15 @@
   body {
     @apply font-sans antialiased bg-background text-foreground;
   }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* Force scroll to top on page load */
+  body {
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Liquid Gradient Background */
