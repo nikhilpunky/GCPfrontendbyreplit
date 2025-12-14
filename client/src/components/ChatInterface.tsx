@@ -110,7 +110,7 @@ export default function ChatInterface({ isFullscreen = false }: ChatInterfacePro
     setIsTyping(true);
 
     try {
-      const res = await fetch("http://localhost:3555/chat", {
+      const res = await fetch("https://giguai.growithcp.live/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: text, sessionId })
