@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -21,9 +22,12 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-4 h-16">
           <Link href="/" data-testid="link-logo">
-            <span className="text-xl font-bold text-gradient cursor-pointer">
-              CyberPunk AI
-            </span>
+            <div className="flex items-center gap-2 cursor-pointer">
+              <img src={logo} alt="CyberPunk AI Logo" className="w-8 h-8 object-contain" />
+              <span className="text-xl font-bold text-gradient">
+                CyberPunk AI
+              </span>
+            </div>
           </Link>
 
           <nav className="hidden md:flex items-center gap-1" data-testid="nav-desktop">

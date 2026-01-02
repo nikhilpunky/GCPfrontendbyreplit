@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { MessageCircle, Send, Sparkles } from "lucide-react";
 import { useSessionId } from "@/hooks/use-session-id";
+import logo from "@/assets/logo.png";
 
 interface Message {
   text: string;
@@ -146,8 +147,8 @@ export default function ChatInterface({ isFullscreen = false }: ChatInterfacePro
       <div className="flex flex-col h-full">
         <div className="flex items-center justify-between gap-4 p-6 border-b border-border bg-background/95 backdrop-blur-sm">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-              <MessageCircle className="w-5 h-5 text-primary" />
+            <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden p-1">
+              <img src={logo} alt="Logo" className="w-full h-full object-contain" />
             </div>
             <div>
               <span className="font-semibold text-lg">CyberPunk AI Consultant</span>
@@ -237,8 +238,8 @@ export default function ChatInterface({ isFullscreen = false }: ChatInterfacePro
       >
         <div className="flex items-center justify-between gap-4 p-4 border-b border-border">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
-              <MessageCircle className="w-4 h-4 text-primary" />
+            <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden p-1">
+              <img src={logo} alt="Logo" className="w-full h-full object-contain" />
             </div>
             <span className="font-medium">CyberPunk AI Consultant</span>
           </div>

@@ -50,6 +50,7 @@ export default function Home() {
               className="w-32 h-32 mb-8"
               animate={{ rotate: 360 }}
               transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+              loading="lazy"
             />
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               Confused about <span className="text-gradient">website needs</span>?
