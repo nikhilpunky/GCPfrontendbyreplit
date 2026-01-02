@@ -67,7 +67,7 @@ export default function WhyGrowithCP() {
             className="text-center mb-16"
           >
             <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-              Why Choose <span className="text-gradient">GrowithCP</span>?
+              Why Choose <span className="text-gradient">CyberPunk AI</span>?
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               We believe everyone deserves access to honest, expert website guidance 

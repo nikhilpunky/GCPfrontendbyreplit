@@ -8,7 +8,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/how-it-works", label: "How It Works" },
   { href: "/pricing", label: "Pricing" },
-  { href: "/why-growithcp", label: "Why GrowithCP" },
+  { href: "/why-growithcp", label: "Why CyberPunk AI" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -22,7 +22,7 @@ export default function Header() {
         <div className="flex items-center justify-between gap-4 h-16">
           <Link href="/" data-testid="link-logo">
             <span className="text-xl font-bold text-gradient cursor-pointer">
-              GrowithCP
+              CyberPunk AI
             </span>
           </Link>
 

@@ -49,7 +49,7 @@ export default function HowItWorks() {
             className="text-center mb-16"
           >
             <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-              How <span className="text-gradient">GrowithCP</span> Works
+              How <span className="text-gradient">CyberPunk AI</span> Works
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Four simple steps to understand your website needs and get fair pricing guidance.

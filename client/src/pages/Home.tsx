@@ -6,6 +6,7 @@ import GlassCard from "@/components/GlassCard";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Shield, Zap, MessageCircle, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 export default function Home() {
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -41,11 +42,15 @@ export default function Home() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-12 flex flex-col items-center"
           >
-            <Badge variant="secondary" className="mb-6">
-              AI-Powered Website Consultant
-            </Badge>
+            <motion.img
+              src={logo}
+              alt="CyberPunk AI Logo"
+              className="w-32 h-32 mb-8"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+            />
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               Confused about <span className="text-gradient">website needs</span>?
             </h1>
@@ -75,7 +80,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold mb-4">Why Choose GrowithCP?</h2>
+            <h2 className="text-3xl font-bold mb-4">Why Choose CyberPunk AI?</h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
               We make website planning simple and transparent.
             </p>

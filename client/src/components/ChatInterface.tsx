@@ -150,7 +150,7 @@ export default function ChatInterface({ isFullscreen = false }: ChatInterfacePro
               <MessageCircle className="w-5 h-5 text-primary" />
             </div>
             <div>
-              <span className="font-semibold text-lg">GrowithCP AI Consultant</span>
+              <span className="font-semibold text-lg">CyberPunk AI Consultant</span>
               <p className="text-sm text-muted-foreground">Your website planning assistant</p>
             </div>
           </div>
@@ -240,7 +240,7 @@ export default function ChatInterface({ isFullscreen = false }: ChatInterfacePro
             <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
               <MessageCircle className="w-4 h-4 text-primary" />
             </div>
-            <span className="font-medium">GrowithCP AI Consultant</span>
+            <span className="font-medium">CyberPunk AI Consultant</span>
           </div>
         </div>
 

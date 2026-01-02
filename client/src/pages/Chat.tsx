@@ -63,7 +63,7 @@ export default function Chat() {
           <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
             <MessageCircle className="w-5 h-5 text-primary" />
           </div>
-          <h2 className="text-2xl font-bold">GrowithCP AI Chat</h2>
+          <h2 className="text-2xl font-bold">CyberPunk AI Chat</h2>
         </div>
 
         <div className="flex-1 overflow-y-auto p-6 space-y-4" style={{ height: 'calc(100% - 140px)' }}>
